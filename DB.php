@@ -3,8 +3,7 @@ class DB {
 
     protected mysqli $connect;
 
-
-    public function __construct($host ='127.0.0.1', $user = 'root', $pass = ' ', $db='oop')
+    public function __construct($host ='127.0.0.1', $user = 'root', $pass = '', $db='oop')
     {
         $this->connect = new mysqli( $host , $user , $pass , $db);
     }

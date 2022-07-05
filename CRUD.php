@@ -1,4 +1,5 @@
 <?php
+/** @noinspection ALL */
 include './DB.php';
 class CRUD
 {
@@ -9,7 +10,7 @@ class CRUD
     public int $id;
     public object $connect;
 
-    public function __construct(string $table,  $columns=[],  $data=[],  $id =0,  $query=' ')
+    public function __construct(string $table ,$columns=[] ,$data=[],$id =0,$query=' ')
     {
 
         $this->table = $table;
@@ -36,13 +37,13 @@ class CRUD
     public function update(): string
     {
         unset($this->data['action']);
-        $dat ='';
-
-        foreach ($this->data as $key =>$value){
-            $dat .= $key ." ='" . $value . "',";
+        $data = '';
+        foreach ($this->data as $key => $value){
+            $data.= $key . "='" . $value . "',";
         }
-        $dat =  rtrim($dat,',');
-        $query = $this->connect->getConnect()->query("update" . $this->table . "set" . implode('=', $this->data) . "where id=" . $this->id);
+        $data= rtrim($data, ',');
+
+        $query = $this->connect->getConnect()->query("update" . $this->table . "set" . $data . " where id=" . $this->id);
 
         if ($query) {
             return "Success";
@@ -53,7 +54,7 @@ class CRUD
     public function delete(): string
     {
 
-        $query = $this->connect->getConnect()->query("delete from" . $this->table . "where id = " . $this->id);
+        $query = $this->connect->getConnect()->query( " delete * from " . $this->table . " where id= " . $this->id);
 
         if ($query) {
             return "Success";
@@ -63,7 +64,7 @@ class CRUD
 
     public function show()
     {
-        $query = $this->connect->getConnect()->query("select * from" . $this->table . "where id = " . $this->id);
+        $query = $this->connect->getConnect()->query(" select * from " . $this->table . " where id= " . $this->id);
 
         if ($query) {
             return $query->fetch_object();
@@ -74,7 +75,7 @@ class CRUD
     public function list():array
     {
         $data = [];
-        $query = $this->connect->getConnect()->query("select " . implode(',',$this->columns)   . "  from" . $this->table);
+        $query = $this->connect->getConnect()->query("select * from " . $this->table);
 
         if ($query && $query->num_rows > 0) {
             while ($item = $query->fetch_object()) {

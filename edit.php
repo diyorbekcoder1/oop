@@ -1,15 +1,10 @@
 <?php
 include './CRUD.php';
 $id =$_GET['id'];
-$crud = new CRUD( 'users',['id','firstname','lastname','email','phone'],[],$id);
+$crud = new CRUD( 'users',['id','firstname','lastname','email','phone','about'], [] ,$id);
 $user = $crud->show();
 
 ?>
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +23,7 @@ $user = $crud->show();
 <div class="container">
     <div class="row">
         <div class="col-md-12 m-5">
-            <form method="post" action="user.php?id<?=$id ?>" enctype="multipart/form-data">
+            <form method="post" action="user.php?id=<?=$id ?>" enctype="multipart/form-data">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row mb-4">
                     <div class="col">
@@ -61,15 +56,15 @@ $user = $crud->show();
 
                 <!-- Message input -->
                 <div class="form-outline mb-4">
-                    <textarea class="form-control " name="about" value="<?=$user->about ?>" id="form6Example7" rows="4"></textarea>
+                    <textarea class="form-control " name="about"  id="form6Example7" rows="4"><?= $user->about ?></textarea>
                     <label class="form-label" for="form6Example7">Additional information</label>
                 </div>
 
                 <!-- Checkbox -->
 
+
                 <div class="form-outline mb-4">
                     <input type="hidden" name="action" value="update" id="form6Example6" class="form-control" />
-
                 </div>
 
                 <!-- Submit button -->

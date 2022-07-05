@@ -53,7 +53,10 @@
                 </div>
 
                 <!-- Checkbox -->
+                <div class="form-outline mb-4">
+                    <input type="hidden" name="action" id="form6Example6" class="form-control" value="create" />
 
+                </div>
 
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-primary btn-block mb-4">Place order</button>

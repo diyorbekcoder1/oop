@@ -1,6 +1,6 @@
 <?php
 include './CRUD.php';
-$crud = new CRUD( 'users',['id','firstname','lastname','email','phone']);
+$crud =new CRUD( 'users',['id','firstname','lastname','email','phone']);
 $users = $crud->list();
 
 
@@ -38,7 +38,7 @@ $users = $crud->list();
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($users as $key=> $user){?>
+                <?php foreach ($users as $key => $user){?>
                 <tr>
                     <th scope="row"><?= ++$key ?></th>
                     <td><?= $user->firstname ?></td>
@@ -46,8 +46,8 @@ $users = $crud->list();
                     <td><?= $user->email ?></td>
                     <td><?= $user->phone ?></td>
                     <td>
-                        <a href="./edit.php?id=<?= $user->id ?>" class="btn btn-primary">Edit</a>
-                        <a href="./user.php?id=<?= $user->id ?>&action=delete " class="btn btn-primary">Delete</a>
+                        <a href="./edit.php?id=<?=$user->id ?>" class="btn btn-primary">Edit</a>
+                        <a href="./user.php?id=<?=$user->id ?>&action=delete" class="btn btn-danger">Delete</a>
 
                     </td>
 
