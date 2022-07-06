@@ -37,13 +37,13 @@ class CRUD
     public function update(): string
     {
         unset($this->data['action']);
-        $data = '';
+        $data = ' ';
         foreach ($this->data as $key => $value){
-            $data.= $key . "='" . $value . "',";
+            $data .= $key . "='" . $value . "',";
         }
         $data= rtrim($data, ',');
 
-        $query = $this->connect->getConnect()->query("update" . $this->table . "set" . $data . " where id=" . $this->id);
+        $query = $this->connect->getConnect()->query("update " . $this->table . " set " .$data. " where id=" . $this->id);
 
         if ($query) {
             return "Success";
@@ -54,7 +54,7 @@ class CRUD
     public function delete(): string
     {
 
-        $query = $this->connect->getConnect()->query( " delete * from " . $this->table . " where id= " . $this->id);
+        $query = $this->connect->getConnect()->query( " delete from " . $this->table . " where id=" . $this->id);
 
         if ($query) {
             return "Success";
